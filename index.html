@@ -1017,138 +1017,6 @@
   .mantra-sep { color: var(--gold); opacity: 0.5; margin: 0 6px; }
   .mantra-sub-italic em { color: rgba(201,168,76,0.7); font-style: normal; font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.15em; }
 
-  /* ── DRAG & DROP IMAGE UPLOAD ── */
-  .dropzone {
-    position: relative;
-    cursor: pointer !important;
-  }
-  .placeholder-content {
-    display: flex; align-items: center; justify-content: center;
-    width: 100%; height: 100%;
-    position: relative; z-index: 1;
-  }
-  .drop-overlay {
-    position: absolute; inset: 0;
-    border: 2px dashed transparent;
-    transition: all 0.25s ease;
-    z-index: 3;
-    pointer-events: none;
-  }
-  .dropzone:hover .drop-overlay,
-  .dropzone.drag-over .drop-overlay {
-    border-color: rgba(201,168,76,0.5);
-    background: rgba(201,168,76,0.04);
-  }
-  .dropzone.drag-over .drop-overlay {
-    border-color: var(--gold);
-    background: rgba(201,168,76,0.1);
-  }
-  .drop-hint {
-    position: absolute;
-    bottom: 14px; left: 50%;
-    transform: translateX(-50%);
-    display: flex; align-items: center; gap: 7px;
-    background: rgba(13,13,13,0.75);
-    border: 1px solid var(--border);
-    padding: 7px 14px;
-    opacity: 0;
-    transition: opacity 0.25s ease;
-    z-index: 4;
-    white-space: nowrap;
-    backdrop-filter: blur(6px);
-    pointer-events: none;
-  }
-  .dropzone:hover .drop-hint,
-  .dropzone.drag-over .drop-hint {
-    opacity: 1;
-  }
-  .drop-icon {
-    font-size: 0.9rem;
-    color: var(--gold);
-    font-weight: bold;
-  }
-  .drop-text {
-    font-family: 'Cardo', serif;
-    font-size: 0.68rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--gold-light);
-  }
-  .uploaded-img {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%;
-    object-fit: cover;
-    z-index: 2;
-  }
-  .img-clear-btn {
-    position: absolute; top: 10px; left: 10px;
-    width: 28px; height: 28px;
-    background: rgba(13,13,13,0.85);
-    border: 1px solid var(--border);
-    color: var(--gold-light);
-    font-size: 0.75rem;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    z-index: 10;
-    cursor: pointer !important;
-    transition: background 0.2s, color 0.2s;
-    backdrop-filter: blur(4px);
-  }
-  .img-clear-btn:hover {
-    background: rgba(201,168,76,0.25);
-    color: var(--gold);
-  }
-  /* Hero dropzone */
-  .hero-image-area.dropzone .drop-hint {
-    bottom: 100px;
-  }
-  .hero-image-area.dropzone .uploaded-img {
-    z-index: 1;
-  }
-  .hero-image-area.dropzone.has-image .hero-art { opacity: 0.15; }
-  .hero-image-area.dropzone.has-image .hero-tag { z-index: 5; }
-
-  /* Upload panel banner */
-  .upload-panel {
-    background: var(--charcoal);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    padding: 28px 60px;
-    display: flex; align-items: center; gap: 20px;
-    position: sticky; top: 62px; z-index: 50;
-  }
-  .upload-panel-icon { font-size: 1.4rem; opacity: 0.7; }
-  .upload-panel-text {
-    flex: 1;
-  }
-  .upload-panel-title {
-    font-family: 'Cinzel', serif;
-    font-size: 0.72rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 3px;
-  }
-  .upload-panel-sub {
-    font-size: 0.78rem;
-    color: var(--muted);
-  }
-  .upload-panel-sub em { color: var(--gold-light); font-style: normal; }
-  .upload-panel-btn {
-    background: transparent;
-    border: 1px solid var(--gold);
-    color: var(--gold-light);
-    padding: 9px 22px;
-    font-family: 'Cardo', serif;
-    font-size: 0.72rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    cursor: pointer !important;
-    transition: all 0.25s;
-    white-space: nowrap;
-  }
-  .upload-panel-btn:hover { background: var(--gold); color: var(--onyx); }
-
   /* ── KEYFRAMES ── */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(24px); }
@@ -1190,17 +1058,6 @@
   <a href="#collections" class="nav-cta">Explore</a>
 </nav>
 
-<!-- UPLOAD PANEL -->
-<div class="upload-panel" id="uploadPanel">
-  <div class="upload-panel-icon">🖼️</div>
-  <div class="upload-panel-text">
-    <div class="upload-panel-title">Image Upload Mode</div>
-    <div class="upload-panel-sub">Hover any image area and <em>drag & drop</em> a photo, or click an area to browse. Images are stored for this session.</div>
-  </div>
-  <button class="upload-panel-btn" onclick="document.getElementById('globalFileInput').click()">Browse Files</button>
-  <input type="file" id="globalFileInput" accept="image/*" multiple style="display:none;">
-</div>
-
 <!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-left">
@@ -1218,7 +1075,7 @@
     </div>
   </div>
   <div class="hero-right">
-    <div class="hero-image-area dropzone" data-slot="hero">
+    <div class="hero-image-area">
       <div class="hero-art">
         <div class="hero-grid-line v" style="left: 33%;"></div>
         <div class="hero-grid-line v" style="left: 66%;"></div>
@@ -1230,10 +1087,6 @@
           <div class="hero-symbol">א</div>
         </div>
       </div>
-      <img class="uploaded-img" src="" alt="" style="display:none;">
-      <div class="drop-overlay"></div>
-      <div class="drop-hint"><span class="drop-icon">↑</span><span class="drop-text">Drop hero image</span></div>
-      <button class="img-clear-btn" title="Remove image" style="display:none;">✕</button>
       <div class="hero-tag">
         <div class="hero-tag-label">New Collection</div>
         <div class="hero-tag-value">Lumière Series</div>
@@ -1350,19 +1203,10 @@
 
     <!-- Featured -->
     <div class="product-card">
-      <div class="product-visual dropzone" data-slot="product-1">
-        <div class="placeholder-content">
-          <div class="product-icon">🦾</div>
-          <svg style="position:absolute;opacity:0.12" width="200" height="200" viewBox="0 0 200 200"><circle cx="100" cy="100" r="90" fill="none" stroke="#c9a84c" stroke-width="1"/><circle cx="100" cy="100" r="60" fill="none" stroke="#c9a84c" stroke-width="0.5"/></svg>
-        </div>
-        <div class="drop-hint">
-          <span class="drop-icon">↑</span>
-          <span class="drop-text">Drop image here</span>
-        </div>
-        <img class="uploaded-img" src="" alt="" style="display:none;">
-        <div class="drop-overlay"></div>
+      <div class="product-visual">
+        <div class="product-icon">🦾</div>
+        <svg style="position:absolute;opacity:0.12" width="200" height="200" viewBox="0 0 200 200"><circle cx="100" cy="100" r="90" fill="none" stroke="#c9a84c" stroke-width="1"/><circle cx="100" cy="100" r="60" fill="none" stroke="#c9a84c" stroke-width="0.5"/></svg>
         <div class="product-badge">Signature Piece</div>
-        <button class="img-clear-btn" title="Remove image" style="display:none;">✕</button>
       </div>
       <div class="product-info">
         <div class="product-category">Prosthetics</div>
@@ -1376,12 +1220,8 @@
     </div>
 
     <div class="product-card">
-      <div class="product-visual dropzone" data-slot="product-2">
-        <div class="placeholder-content"><div class="product-icon">🦽</div></div>
-        <div class="drop-hint"><span class="drop-icon">↑</span><span class="drop-text">Drop image here</span></div>
-        <img class="uploaded-img" src="" alt="" style="display:none;">
-        <div class="drop-overlay"></div>
-        <button class="img-clear-btn" title="Remove image" style="display:none;">✕</button>
+      <div class="product-visual">
+        <div class="product-icon">🦽</div>
       </div>
       <div class="product-info">
         <div class="product-category">Mobility</div>
@@ -1395,12 +1235,8 @@
     </div>
 
     <div class="product-card">
-      <div class="product-visual dropzone" data-slot="product-3">
-        <div class="placeholder-content"><div class="product-icon">👂</div></div>
-        <div class="drop-hint"><span class="drop-icon">↑</span><span class="drop-text">Drop image here</span></div>
-        <img class="uploaded-img" src="" alt="" style="display:none;">
-        <div class="drop-overlay"></div>
-        <button class="img-clear-btn" title="Remove image" style="display:none;">✕</button>
+      <div class="product-visual">
+        <div class="product-icon">👂</div>
       </div>
       <div class="product-info">
         <div class="product-category">Sensory</div>
@@ -1414,12 +1250,8 @@
     </div>
 
     <div class="product-card">
-      <div class="product-visual dropzone" data-slot="product-4">
-        <div class="placeholder-content"><div class="product-icon">💉</div></div>
-        <div class="drop-hint"><span class="drop-icon">↑</span><span class="drop-text">Drop image here</span></div>
-        <img class="uploaded-img" src="" alt="" style="display:none;">
-        <div class="drop-overlay"></div>
-        <button class="img-clear-btn" title="Remove image" style="display:none;">✕</button>
+      <div class="product-visual">
+        <div class="product-icon">💉</div>
       </div>
       <div class="product-info">
         <div class="product-category">Metabolic</div>
@@ -1433,12 +1265,8 @@
     </div>
 
     <div class="product-card">
-      <div class="product-visual dropzone" data-slot="product-5">
-        <div class="placeholder-content"><div class="product-icon">🌬️</div></div>
-        <div class="drop-hint"><span class="drop-icon">↑</span><span class="drop-text">Drop image here</span></div>
-        <img class="uploaded-img" src="" alt="" style="display:none;">
-        <div class="drop-overlay"></div>
-        <button class="img-clear-btn" title="Remove image" style="display:none;">✕</button>
+      <div class="product-visual">
+        <div class="product-icon">🌬️</div>
       </div>
       <div class="product-info">
         <div class="product-category">Respiratory</div>
@@ -1752,98 +1580,6 @@
       tab.classList.add('active');
     });
   });
-
-  // ── DRAG & DROP IMAGE UPLOAD ──
-  function applyImageToZone(zone, src) {
-    const img = zone.querySelector('.uploaded-img');
-    const clearBtn = zone.querySelector('.img-clear-btn');
-    const placeholder = zone.querySelector('.placeholder-content');
-    img.src = src;
-    img.style.display = 'block';
-    if (placeholder) placeholder.style.opacity = '0';
-    if (clearBtn) clearBtn.style.display = 'flex';
-    zone.classList.add('has-image');
-  }
-
-  function clearImageFromZone(zone) {
-    const img = zone.querySelector('.uploaded-img');
-    const clearBtn = zone.querySelector('.img-clear-btn');
-    const placeholder = zone.querySelector('.placeholder-content');
-    img.src = '';
-    img.style.display = 'none';
-    if (placeholder) placeholder.style.opacity = '1';
-    if (clearBtn) clearBtn.style.display = 'none';
-    zone.classList.remove('has-image');
-  }
-
-  function loadFileToZone(file, zone) {
-    if (!file || !file.type.startsWith('image/')) return;
-    const reader = new FileReader();
-    reader.onload = e => applyImageToZone(zone, e.target.result);
-    reader.readAsDataURL(file);
-  }
-
-  let activeZone = null;
-
-  document.querySelectorAll('.dropzone').forEach(zone => {
-    // Click to open file picker
-    zone.addEventListener('click', (e) => {
-      if (e.target.classList.contains('img-clear-btn')) return;
-      activeZone = zone;
-      const input = document.createElement('input');
-      input.type = 'file';
-      input.accept = 'image/*';
-      input.style.display = 'none';
-      document.body.appendChild(input);
-      input.click();
-      input.addEventListener('change', () => {
-        if (input.files[0]) loadFileToZone(input.files[0], zone);
-        document.body.removeChild(input);
-      });
-    });
-
-    // Drag events
-    zone.addEventListener('dragenter', e => { e.preventDefault(); zone.classList.add('drag-over'); });
-    zone.addEventListener('dragover',  e => { e.preventDefault(); zone.classList.add('drag-over'); });
-    zone.addEventListener('dragleave', e => {
-      if (!zone.contains(e.relatedTarget)) zone.classList.remove('drag-over');
-    });
-    zone.addEventListener('drop', e => {
-      e.preventDefault();
-      zone.classList.remove('drag-over');
-      const file = e.dataTransfer.files[0];
-      if (file) loadFileToZone(file, zone);
-    });
-
-    // Clear button
-    const clearBtn = zone.querySelector('.img-clear-btn');
-    if (clearBtn) {
-      clearBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        clearImageFromZone(zone);
-      });
-    }
-  });
-
-  // Global file browse — assigns to next empty zone
-  document.getElementById('globalFileInput').addEventListener('change', function() {
-    const files = Array.from(this.files);
-    const zones = Array.from(document.querySelectorAll('.dropzone'));
-    let zoneIdx = 0;
-    files.forEach(file => {
-      // find next empty zone
-      while (zoneIdx < zones.length && zones[zoneIdx].classList.contains('has-image')) zoneIdx++;
-      if (zoneIdx < zones.length) {
-        loadFileToZone(file, zones[zoneIdx]);
-        zoneIdx++;
-      }
-    });
-    this.value = '';
-  });
-
-  // Prevent global drag-drop from opening new tab
-  document.addEventListener('dragover', e => e.preventDefault());
-  document.addEventListener('drop', e => e.preventDefault());
 </script>
 </body>
 </html>
